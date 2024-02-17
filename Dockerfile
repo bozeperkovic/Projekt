@@ -3,8 +3,8 @@ COPY src /home/app/src
 COPY pom.xml /home/app
 RUN mvn -f /home/app/pom.xml clean package -DskipTests
 FROM openjdk:18-jdk-slim
-COPY --from=build /home/app/target/Knjiznica-0.0.1-SNAPSHOT.jar /app/knjiznica.jar
+COPY --from=build /home/app/target/Kniznica-0.0.1-SNAPSHOT.jar /app/kniznica.jar
 RUN mkdir /app/uploads
 WORKDIR /app
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","/app/knjiznica.jar"]
+ENTRYPOINT ["java","-jar","/app/kniznica.jar"]
