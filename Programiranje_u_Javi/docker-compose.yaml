@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  studentpraksa:
+    container_name: studentpraksa
+    build: .
+    image: studentpraksa:latest
+    ports:
+      - 80:8080
+    networks:
+      - studentpraksa-network
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:latest
+    command: --character-set-server=utf8 --collation-server=utf8_general_ci
+    networks:
+      - studentpraksa-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=lozinka
+      - MYSQL_DATABASE=database
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+volumes:
+  mysql-data:
+networks:
+  studentpraksa-network:
+    driver: bridge
