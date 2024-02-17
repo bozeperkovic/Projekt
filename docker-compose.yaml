@@ -1,13 +1,13 @@
 version: '3.7'
 services:
-  knjiznica:
-    container_name: knjiznica
+  studentpraksa:
+    container_name: studentpraksa
     build: .
-    image: knjiznica:latest
+    image: studentpraksa:latest
     ports:
       - 80:8080
     networks:
-      - knjiznica-network
+      - studentpraksa-network
     depends_on:
       - mysql
   mysql:
